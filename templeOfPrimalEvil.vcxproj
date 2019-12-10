@@ -142,6 +142,7 @@
     <ClInclude Include="Barbarian.hpp" />
     <ClInclude Include="Character.hpp" />
     <ClInclude Include="Die.hpp" />
+    <ClInclude Include="FocusingLens.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="HarryPotter.hpp" />
     <ClInclude Include="InventoryObject.hpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Rumble.hpp" />
     <ClInclude Include="ShadowKey.hpp" />
     <ClInclude Include="Space.hpp" />
+    <ClInclude Include="SubterraneanAtrium.hpp" />
     <ClInclude Include="TempleFoyer.hpp" />
     <ClInclude Include="Tile.hpp" />
     <ClInclude Include="TombOfTheGravediggers.hpp" />
@@ -162,6 +164,7 @@
     <ClCompile Include="Barbarian.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Die.cpp" />
+    <ClCompile Include="FocusingLens.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HarryPotter.cpp" />
     <ClCompile Include="InventoryObject.cpp" />
@@ -174,6 +177,7 @@
     <ClCompile Include="Rumble.cpp" />
     <ClCompile Include="ShadowKey.cpp" />
     <ClCompile Include="Space.cpp" />
+    <ClCompile Include="SubterraneanAtrium.cpp" />
     <ClCompile Include="TempleFoyer.cpp" />
     <ClCompile Include="TombOfTheGravediggers.cpp" />
   </ItemGroup>

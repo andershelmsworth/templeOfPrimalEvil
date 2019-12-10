@@ -69,6 +69,12 @@
     <ClInclude Include="TombOfTheGravediggers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SubterraneanAtrium.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FocusingLens.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,6 +129,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TombOfTheGravediggers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SubterraneanAtrium.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FocusingLens.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

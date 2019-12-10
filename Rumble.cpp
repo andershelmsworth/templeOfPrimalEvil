@@ -17,9 +17,12 @@
 #include "Barbarian.hpp"
 #include "InventoryObject.hpp"
 #include "ShadowKey.hpp"
+#include "Amulet.hpp"
+#include "FocusingLens.hpp"
 #include "LairOfTheSphinx.hpp"
 #include "MightySeal.hpp"
 #include "TombOfTheGravediggers.hpp"
+#include "SubterraneanAtrium.hpp"
 
 /*********************************************************************
 ** Rumble constructor
@@ -69,6 +72,7 @@ void Rumble::runRumble()
     Space* sphinxLair = new LairOfTheSphinx;
     Space* mightySeal = new MightySeal;
     Space* tomb = new TombOfTheGraveDiggers;
+    Space* atrium = new SubterraneanAtrium;
 
     jungleFloor->setSouth(templeFoyer);
     templeFoyer->setNorth(jungleFloor);
@@ -78,6 +82,9 @@ void Rumble::runRumble()
     mightySeal->setNorth(sphinxLair);
     mightySeal->setSouth(tomb);
     tomb->setNorth(mightySeal);
+    tomb->setSouth(atrium);
+    atrium->setNorth(tomb);
+
 
     jungleFloor->setCharacter(playerCharacter);
     playerCharacter->setSpace(jungleFloor);
@@ -154,10 +161,14 @@ void Rumble::runRumble()
                     int keyChoice = getInt(1, 2);
 
                     if (keyChoice == 2) {
+                        std::cout << std::endl;
                         std::cout << "Seems like a bad idea! But okay. You leave the key where it is. It dissapates into mist as you walk away." << std::endl;
+                        std::cout << std::endl;
                     }
                     else if (keyChoice == 1) {
+                        std::cout << std::endl;
                         std::cout << "Wise move. You pick up the key." << std::endl;
+                        std::cout << std::endl;
                         InventoryObject* shadowKey = new ShadowKey;
 
 
@@ -264,13 +275,12 @@ void Rumble::runRumble()
             int sealSuccess = mightySeal->draw(playerCharacter, passingArgument);
 
             if (sealSuccess == 0) {
-                std::cout << std::endl;
                 std::cout << "Proceed down the staircase behind the door?" << std::endl;
                 std::cout << "1: Descend the staircase [-5 minutes]" << std::endl;
                 std::cout << "2: Return to the Lair of the Sphinx [-5 minutes]" << std::endl;
                 int playerChoice = getInt(1, 2);
 
-                if (playerChoice == 0) {
+                if (playerChoice == 2) {
                     //Space* tempSpace = templeQueue->getFront()->getNorth();
                     //templeQueue->removeBack();
                     //templeQueue->addFront(tempSpace);
@@ -289,7 +299,7 @@ void Rumble::runRumble()
             else if (sealSuccess == -1) {
                 std::cout << std::endl;
                 std::cout << "What next?" << std::endl;
-                std::cout << "1: Sit down and cry [-60 minutes]" << std::endl;
+                std::cout << "1: Sit down and cry [-500 minutes]" << std::endl;
                 std::cout << "2: Return to the Lair of the Sphinx [-5 minutes]" << std::endl;
                 int playerChoice = getInt(1, 2);
 
@@ -305,7 +315,7 @@ void Rumble::runRumble()
                     //Space* tempSpace = templeQueue->removeFront();
                     //templeQueue->addBack(tempSpace);
                     std::cout << "You collapse to the floor in a blubbering mess." << std::endl;
-                    rounds = rounds - 60;
+                    rounds = rounds - 500;
                 }
             }
         }
@@ -324,7 +334,7 @@ void Rumble::runRumble()
             std::cout << "2: Return up the staircase to the Mighty Seal [-5 minutes]" << std::endl;
             int playerChoice = getInt(1, 2);
 
-            if (playerChoice == 0) {
+            if (playerChoice == 2) {
                 //Space* tempSpace = templeQueue->getFront()->getNorth();
                 //templeQueue->removeBack();
                 //templeQueue->addFront(tempSpace);
@@ -338,10 +348,44 @@ void Rumble::runRumble()
                 playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                 std::cout << "You descend through the trapdoor, making your way deeper into the temple." << std::endl;
                 rounds = rounds - 5;
-                won = true;
             }
 
         }
+        else if (playerCharacter->getSpace()->getName() == "Subterranean Atrium") {
+            std::cout << std::endl;
+            std::cout << "||||LEVEL -5||||" << std::endl;
+            std::cout << "You are now in the Subterranean Atrium." << std::endl;
+            std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
+            std::cout << std::endl;
+            atrium->setCharacter(playerCharacter);
+            int refractionGame = atrium->draw(playerCharacter, passingArgument);
+            if (refractionGame == -1) {
+                rounds = rounds - 500;
+            }
+            else {
+                std::cout << "Will you descend to the den of the sleeping god, or retrace your steps?" << std::endl;
+                std::cout << "1: Descend the walkway towards the depths [-5 minutes]" << std::endl;
+                std::cout << "2: Return through the trapdoor to the tomb [-5 minutes]" << std::endl;
+                int progressChoice = getInt(1, 2);
+                if (progressChoice == 2) {
+                    //Space* tempSpace = templeQueue->getFront()->getNorth();
+                    //templeQueue->removeBack();
+                    //templeQueue->addFront(tempSpace);
+                    playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
+                    std::cout << "You make your way back up towards the Tomb." << std::endl;
+                    rounds = rounds - 5;
+                }
+                else if (progressChoice == 1) {
+                    //Space* tempSpace = templeQueue->removeFront();
+                    //templeQueue->addBack(tempSpace);
+                    playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
+                    std::cout << "You descend to the final level of the temple." << std::endl;
+                    rounds = rounds - 5;
+                    won = true;
+                }
+            }
+        }
+
     }
 
     if (rounds <= 0) {
@@ -365,6 +409,9 @@ void Rumble::runRumble()
     delete jungleFloor;
     delete templeFoyer;
     delete sphinxLair;
+    delete mightySeal;
+    delete tomb;
+    delete atrium;
     //delete templeQueue;
 }
 

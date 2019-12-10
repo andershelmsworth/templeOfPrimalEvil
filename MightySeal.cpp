@@ -55,24 +55,32 @@ int MightySeal::draw(Character* incPlayerCharacter, int& passingArg)
                     int lootChoice = getInt(1, 2);
 
                     if (lootChoice == 2) {
+                        std::cout << std::endl;
                         std::cout << "Seems like a bad idea! But okay. You leave the amulet where it is." << std::endl;
+                        std::cout << std::endl;
                     }
                     else if (lootChoice == 1) {
-                        std::cout << "Wise move. You pick up the amulet." << std::endl;
+                        std::cout << std::endl;
+                        std::cout << "Wise move. You grab the amulet." << std::endl;
+                        std::cout << std::endl;
                         InventoryObject* theAmulet = new Amulet;
-
 
                         if (incPlayerCharacter->getInventory()[0] == NULL) {
                             InventoryObject** currentInventory = incPlayerCharacter->getInventory();
                             currentInventory[0] = theAmulet;
                             std::cout << "Placed Golden Amulet in inventory slot one." << std::endl;
+                            std::cout << std::endl;
+                            this->looted = true;
                         }
                         else if (incPlayerCharacter->getInventory()[0] != NULL && incPlayerCharacter->getInventory()[1] == NULL) {
                             InventoryObject** currentInventory = incPlayerCharacter->getInventory();
                             currentInventory[1] = theAmulet;
                             std::cout << "Placed Golden Amulet in inventory slot two." << std::endl;
+                            std::cout << std::endl;
+                            this->looted = true;
                         }
                         else if (incPlayerCharacter->getInventory()[0] != NULL && incPlayerCharacter->getInventory()[1] != NULL) {
+                            std::cout << std::endl;
                             std::cout << "Your inventory is full. Destroy an item to pick it up?" << std::endl;
                             std::cout << "1: Delete item in slot one." << std::endl;
                             std::cout << "2: Delete item in slot two." << std::endl;
@@ -82,16 +90,24 @@ int MightySeal::draw(Character* incPlayerCharacter, int& passingArg)
                                 InventoryObject** currentInventory = incPlayerCharacter->getInventory();
                                 delete currentInventory[0];
                                 currentInventory[0] = theAmulet;
-                                std::cout << "Wise move. You destroy the item in slot one, then place the key in inventory slot one." << std::endl;
+                                std::cout << std::endl;
+                                std::cout << "Smart move. You destroy the item in slot one, then place the amulet in inventory slot one." << std::endl;
+                                std::cout << std::endl;
+                                this->looted = true;
                             }
                             else if (deleteChoice == 2) {
                                 InventoryObject** currentInventory = incPlayerCharacter->getInventory();
                                 delete currentInventory[1];
                                 currentInventory[1] = theAmulet;
-                                std::cout << "Wise move. You destroy the item in slot two, then place the key in inventory slot two." << std::endl;
+                                std::cout << std::endl;
+                                std::cout << "Wise move. You destroy the item in slot two, then place the amulet in inventory slot two." << std::endl;
+                                std::cout << std::endl;
+                                this->looted = true;
                             }
                             else if (deleteChoice == 3) {
+                                std::cout << std::endl;
                                 std::cout << "Seems like a bad idea! But okay. You put the amulet back." << std::endl;
+                                std::cout << std::endl;
                             }
                         }
 
