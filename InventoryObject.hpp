@@ -14,7 +14,6 @@
 #include <cmath>
 #include <string>
 #include "Space.hpp"
-#include "Pixel.hpp"
 
 #ifndef INVENTORYOBJECT_HPP
 #define INVENTORYOBJECT_HPP

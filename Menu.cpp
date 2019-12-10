@@ -76,7 +76,6 @@ void Menu::showMenu()
             Rumble* theRumble = new Rumble;
             theRumble->runRumble();
             delete theRumble;
-            //delete testSquare;
         }
         else if (selection == 2) {
             //Exit while loop and exit program

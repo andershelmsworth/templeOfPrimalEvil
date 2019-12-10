@@ -21,5 +21,6 @@ int TempleFoyer::draw(Character* playerCharacter, int& passingArg)
 	currentGame->startFight(playerCharacter, foyerBarb, winner);
 	winner = currentGame->getRounds();
 	delete currentGame;
+	delete foyerBarb;
 	return winner;
 }

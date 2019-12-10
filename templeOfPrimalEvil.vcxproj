@@ -157,7 +157,6 @@
     <ClInclude Include="Space.hpp" />
     <ClInclude Include="SubterraneanAtrium.hpp" />
     <ClInclude Include="TempleFoyer.hpp" />
-    <ClInclude Include="Tile.hpp" />
     <ClInclude Include="TombOfTheGravediggers.hpp" />
   </ItemGroup>
   <ItemGroup>

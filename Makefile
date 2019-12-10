@@ -1,6 +1,6 @@
 
 output: main.o Menu.o Game.o Die.o Character.o Barbarian.o HarryPotter.o Amulet.o FocusingLens.o InventoryObject.o JungleFloor.o LairOfTheSphinx.o MightySeal.o Queue.o Rest.o Rumble.o ShadowKey.o Space.o SubterraneanAtrium.o TempleFoyer.o TombOfTheGravediggers.o
-	g++ -std=c++11 main.o Menu.o Game.o Die.o Character.o Barbarian.o Vampire.o BlueMen.o Medusa.o HarryPotter.o -o output
+	g++ -std=c++11 main.o Menu.o Game.o Die.o Character.o Barbarian.o HarryPotter.o Amulet.o FocusingLens.o InventoryObject.o JungleFloor.o LairOfTheSphinx.o MightySeal.o Queue.o Rest.o Rumble.o ShadowKey.o Space.o SubterraneanAtrium.o TempleFoyer.o TombOfTheGravediggers.o -o output
 
 main.o: main.cpp
 	g++ -std=c++11 -c main.cpp

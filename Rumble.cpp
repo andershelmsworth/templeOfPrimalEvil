@@ -461,6 +461,7 @@ void Rumble::runRumble()
     delete mightySeal;
     delete tomb;
     delete atrium;
+    delete rest;
     //delete templeQueue;
 }
 

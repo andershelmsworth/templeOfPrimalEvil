@@ -14,7 +14,6 @@
 #include <cmath>
 #include <string>
 #include "Space.hpp"
-#include "Pixel.hpp"
 #include "Character.hpp"
 
 #ifndef LAIROFTHESPHINX_HPP
