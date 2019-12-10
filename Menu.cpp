@@ -48,7 +48,7 @@ Menu::~Menu()
 *********************************************************************/
 void Menu::showMenu()
 {
-    std::cout << "Welcome to the Fibonacci Timer!" << std::endl;
+    std::cout << "Welcome to the Temple of Primal Evil!" << std::endl;
     int firstRun = 0;
 
     //Loop as long as 6 isn't selected.
@@ -56,7 +56,7 @@ void Menu::showMenu()
         //Showing options
         std::cout << std::endl;
         std::cout << "Please make a selection from the following options:" << std::endl;
-        std::cout << "1. Determine the time needed to calculate the Nth Fibonacci number." << std::endl;
+        std::cout << "1. Play game." << std::endl;
         std::cout << "2. Exit." << std::endl;
         std::cout << std::endl;
         
@@ -64,6 +64,15 @@ void Menu::showMenu()
         int selection = getInt(1, 2);
 
         if (selection == 1) {
+            std::cout << std::endl;
+            std::cout << "||||THE TEMPLE OF PRIMAL EVIL||||" << std::endl;
+            std::cout << std::endl;
+            std::cout << "You, our intrepid hero, have been hand-selected for a daring mission to save the world." << std::endl;
+            std::cout << "An ancient god slumbers in the depths of a long-forgotten temple, buried beneath the floor of a dense jungle." << std::endl;
+            std::cout << "The nation's top scientists predict the god will soon awake, wreaking havoc across the globe." << std::endl;
+            std::cout << "Descend to the bottom of the temple, plant your bomb, and make your escape before the bomb detonates!" << std::endl;
+            std::cout << std::endl;
+
             Rumble* theRumble = new Rumble;
             theRumble->runRumble();
             delete theRumble;

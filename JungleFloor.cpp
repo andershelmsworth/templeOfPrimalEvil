@@ -10,7 +10,7 @@ JungleFloor::~JungleFloor()
 {
 }
 
-int JungleFloor::draw(Character* playerCharacter)
+int JungleFloor::draw(Character* playerCharacter, int& passingArg)
 {
 	return 0;
 }

@@ -1,4 +1,3 @@
-﻿  Queue.cpp
-C:\Users\Work\source\repos\templeOfPrimalEvil\Queue.cpp(328): warning C4715: 'Queue::removeBack': not all control paths return a value
-C:\Users\Work\source\repos\templeOfPrimalEvil\Queue.cpp(265): warning C4715: 'Queue::removeFront': not all control paths return a value
+﻿  Rumble.cpp
+C:\Users\Work\source\repos\templeOfPrimalEvil\Rumble.cpp(57,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   templeOfPrimalEvil.vcxproj -> C:\Users\Work\source\repos\templeOfPrimalEvil\Debug\templeOfPrimalEvil.exe

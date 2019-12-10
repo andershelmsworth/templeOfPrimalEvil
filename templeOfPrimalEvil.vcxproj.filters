@@ -57,6 +57,9 @@
     <ClInclude Include="ShadowKey.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LairOfTheSphinx.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShadowKey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LairOfTheSphinx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,7 +13,7 @@ TempleFoyer::~TempleFoyer()
 {
 }
 
-int TempleFoyer::draw(Character* playerCharacter)
+int TempleFoyer::draw(Character* playerCharacter, int& passingArg)
 {
 	int winner = 0;
 	Character* foyerBarb = new Barbarian;
