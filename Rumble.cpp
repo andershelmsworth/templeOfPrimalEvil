@@ -15,6 +15,8 @@
 #include "Queue.hpp"
 #include "TempleFoyer.hpp"
 #include "Barbarian.hpp"
+#include "InventoryObject.hpp"
+#include "ShadowKey.hpp"
 
 /*********************************************************************
 ** Rumble constructor
@@ -61,6 +63,8 @@ void Rumble::runRumble()
     Queue* templeQueue = new Queue;
     Space* jungleFloor = new JungleFloor;
     Space* templeFoyer = new TempleFoyer;
+    jungleFloor->setSouth(templeFoyer);
+    templeFoyer->setNorth(jungleFloor);
     jungleFloor->setCharacter(playerCharacter);
     templeQueue->addBack(jungleFloor);
     templeQueue->addBack(templeFoyer);
@@ -101,11 +105,72 @@ void Rumble::runRumble()
             else if (playerChoice == 1) {
                 int roundsElapsed = templeQueue->getFront()->draw(playerCharacter);
                 rounds = rounds - roundsElapsed;
+                std::cout << std::endl;
                 std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
-                Space* tempSpace = templeQueue->removeFront();
-                templeQueue->addBack(tempSpace);
-                std::cout << "You descend the ladder to the next level." << std::endl;
-                won = true;
+                std::cout << std::endl;
+                std::cout << "On the skellington's ominously trembling bones, a shadowy key appears." << std::endl;
+                std::cout << "Something tells you you might have to fight him again if you return." << std::endl;
+                std::cout << "Will you pick up the key?" << std::endl;
+                std::cout << std::endl;
+                std::cout << "1: Pick up the key." << std::endl;
+                std::cout << "2: Leave it where it is." << std::endl;
+                int keyChoice = getInt(1, 2);
+
+                if (keyChoice == 2) {
+                    std::cout << "Seems like a bad idea! But okay. You leave the key where it is. It dissapates into mist as you walk away." << std::endl;
+                }
+                else if (keyChoice == 1) {
+                    std::cout << "Wise move. You pick up the key." << std::endl;
+                    InventoryObject* shadowKey = new ShadowKey;
+
+                    if (playerCharacter->getSlotOne() == NULL) {
+                        playerCharacter->setSlotOne(shadowKey);
+                        std::cout << "Placed Shadowy Key in inventory slot one." << std::endl;
+                    }
+                    else if (playerCharacter->getSlotOne() != NULL && playerCharacter->getSlotTwo() == NULL) {
+                        playerCharacter->setSlotTwo(shadowKey);
+                        std::cout << "Placed Shadowy Key in inventory slot two." << std::endl;
+                    }
+                    else if (playerCharacter->getSlotOne() != NULL && playerCharacter->getSlotTwo() != NULL) {
+                        std::cout << "Your inventory is full. Destroy an item to pick it up?" << std::endl;
+                        std::cout << "1: Delete item in slot one." << std::endl;
+                        std::cout << "2: Delete item in slot two." << std::endl;
+                        std::cout << "3: Put the key back." << std::endl;
+                        int deleteChoice = getInt(1, 2);
+                        if (deleteChoice == 1) {
+                            delete playerCharacter->getSlotOne();
+                            playerCharacter->setSlotOne(shadowKey);
+                            std::cout << "Wise move. You destroy the item in slot one, then place the key in inventory slot one." << std::endl;
+                        }
+                        else if (deleteChoice == 2) {
+                            delete playerCharacter->getSlotTwo();
+                            playerCharacter->setSlotTwo(shadowKey);
+                            std::cout << "Wise move. You destroy the item in slot two, then place the key in inventory slot two." << std::endl;
+                        }
+                        else if (deleteChoice == 3) {
+                            std::cout << "Seems like a bad idea! But okay. You put the key back. It dissapates into mist as you walk away." << std::endl;
+                        }
+                    }
+
+                }
+
+                std::cout << "Descend the ladder to proceed?" << std::endl;
+                std::cout << "1: Descend." << std::endl;
+                std::cout << "2: Return to the surface." << std::endl;
+                int playerChoice = getInt(1, 2);
+
+                if (playerChoice == 2) {
+                    Space* tempSpace = templeQueue->getFront()->getNorth();
+                    templeQueue->removeBack();
+                    templeQueue->addFront(tempSpace);
+                    std::cout << "You return through the door, making your way back to the surface." << std::endl;
+                }
+                else if (playerChoice == 1) {
+                    Space* tempSpace = templeQueue->removeFront();
+                    templeQueue->addBack(tempSpace);
+                    std::cout << "You descend the ladder, making your way deeper into the temple." << std::endl;
+                    won = true;
+                }
             }
         }
     }
@@ -115,6 +180,14 @@ void Rumble::runRumble()
     }
     else if (won == true) {
         std::cout << "You won! Congratulations!" << std::endl;
+    }
+
+    if (playerCharacter->getSlotOne() != NULL) {
+        delete playerCharacter->getSlotOne();
+    }
+
+    if (playerCharacter->getSlotTwo() != NULL) {
+        delete playerCharacter->getSlotTwo();
     }
 
     delete playerCharacter;

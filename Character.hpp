@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include "Space.hpp"
+#include "InventoryObject.hpp"
 
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
@@ -49,6 +50,11 @@ public:
     Space* getSpace();
     void setSpace(Space*);
 
+    InventoryObject* getSlotOne();
+    void setSlotOne(InventoryObject*);
+    InventoryObject* getSlotTwo();
+    void setSlotTwo(InventoryObject*);
+
     //Member functions
     virtual int swing() = 0;
     virtual void defend(int) = 0;
@@ -62,6 +68,8 @@ protected:
     std::string name;
     std::string color;
     Space* currentSpace;
+    InventoryObject* slotOne;
+    InventoryObject* slotTwo;
 };
 
 #endif // !CHARACTER_HPP

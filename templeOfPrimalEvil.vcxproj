@@ -143,10 +143,12 @@
     <ClInclude Include="Die.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="HarryPotter.hpp" />
+    <ClInclude Include="InventoryObject.hpp" />
     <ClInclude Include="JungleFloor.hpp" />
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Queue.hpp" />
     <ClInclude Include="Rumble.hpp" />
+    <ClInclude Include="ShadowKey.hpp" />
     <ClInclude Include="Space.hpp" />
     <ClInclude Include="TempleFoyer.hpp" />
     <ClInclude Include="Tile.hpp" />
@@ -157,11 +159,13 @@
     <ClCompile Include="Die.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HarryPotter.cpp" />
+    <ClCompile Include="InventoryObject.cpp" />
     <ClCompile Include="JungleFloor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Rumble.cpp" />
+    <ClCompile Include="ShadowKey.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="TempleFoyer.cpp" />
   </ItemGroup>

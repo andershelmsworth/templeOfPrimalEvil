@@ -49,10 +49,12 @@ public:
     //Member Functions
     bool isEmpty();
     void addBack(Space*);
+    void addFront(Space*);
     QueueNode* getHeadNode();
     Space* getFront();
     void setHead(QueueNode*);
     Space* removeFront();
+    Space* removeBack();
     void printFront();
     void printQueue();
     void traverseReversely();

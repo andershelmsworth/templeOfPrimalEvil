@@ -106,6 +106,61 @@ void Queue::addBack(Space* incSpace)
 }
 
 /*********************************************************************
+** addBack
+** Paramaters are: int of incoming value
+** What it does: adds a new node to the end of the list
+** Returns: none (void)
+*********************************************************************/
+void Queue::addFront(Space* incSpace)
+{
+    //Initialize new node with inc val
+    QueueNode* newNode = new QueueNode;
+    newNode->location = incSpace;
+    //Check to see if list empty
+    bool checkEmpty = isEmpty();
+
+    if (checkEmpty == true) {
+        //List was empty
+        setHead(newNode);
+        //New head node points to itself
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        //std::cout << "Added first value to the list." << std::endl;
+    }
+    else if (checkEmpty == false) {
+        //Nodes exist in list
+        QueueNode* headNode = getHeadNode();
+        if (headNode->next == headNode) {
+            //Was just one node
+            headNode->prev = newNode;
+            headNode->next = newNode;
+            //Now head is connected to new node
+            newNode->next = headNode;
+            newNode->prev = headNode;
+            setHead(newNode);
+            //Now they point to each other
+            //std::cout << "Added second value to the list." << std::endl;
+        }
+        else {
+            //Was at least two nodes in list
+            //Get the tail node
+            QueueNode* tailNode = headNode->prev;
+            QueueNode* secondNode = headNode;
+            //Set new node's next to head and prev to tail 
+            //& tail's next pointing at new so still circular
+            newNode->next = secondNode;
+            newNode->prev = tailNode;
+            tailNode->next = newNode;
+            //prev shouldn't change for tail node
+            //But head needs to connect to new node
+            secondNode->prev = newNode;//Why does this mess up the printing if not included?
+            //std::cout << "Added next value to the list." << std::endl;
+            setHead(newNode);
+        }
+    }
+}
+
+/*********************************************************************
 ** int getFront
 ** Paramaters are: none
 ** What it does: returns the value of head node
@@ -207,6 +262,69 @@ Space* Queue::removeFront()
             return currentLocation;
         }
     }
+}
+
+Space* Queue::removeBack()
+{
+    //Check if empty
+    bool emptyCheck = isEmpty();
+
+    if (emptyCheck == true) {
+        //List is empty
+        std::cout << "Sorry, couldn't delete first node as list was empty." << std::endl;
+        std::cout << "Returning to main menu." << std::endl;
+    }
+    else if (emptyCheck == false) {
+        //Not empty, getting head node
+        QueueNode* tailNode = getHeadNode()->prev;
+
+        if (tailNode->next == tailNode) {
+            //Just one node
+            setHead(NULL);
+            //std::cout << "Deleted first and only node." << std::endl;
+            //Assign head character to a temporary character pointer
+            Space* currentLocation = tailNode->location;
+            //Delete head node
+            delete tailNode;
+            //return character
+            return currentLocation;
+        }
+        else if (tailNode->next != tailNode && tailNode->prev == getHeadNode())
+        {
+            //Just two nodes
+            QueueNode* nodeOne = tailNode->prev;
+            //Now just one, setting it to point to itself
+            nodeOne->next = nodeOne;
+            nodeOne->prev = nodeOne;
+            //Setting new head to node two
+            setHead(nodeOne);
+            //std::cout << "Deleted first node, original second is now only node." << std::endl;
+            //Assign head character to a temporary character pointer
+            Space* currentLocation = tailNode->location;
+            //Delete head node
+            delete tailNode;
+            //return character
+            return currentLocation;
+        }
+        else {
+            //has at least three
+            //Get tail and original second
+            QueueNode* headNode = getHeadNode();
+            QueueNode* penUltimateNode = tailNode->prev;
+            //Delete head, reattach the circle
+            headNode->prev = penUltimateNode;
+            penUltimateNode->next = headNode;
+            //Setting new head to node two
+            setHead(headNode);
+            //std::cout << "Deleted first node in list." << std::endl;
+            //Assign head character to a temporary character pointer
+            Space* currentLocation = tailNode->location;
+            //Delete head node
+            delete tailNode;
+            //return character
+            return currentLocation;
+        }
+    };
 }
 
 /*********************************************************************
