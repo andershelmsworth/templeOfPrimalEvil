@@ -25,8 +25,8 @@ Character::Character()
     this->armor = 0;
     this->strengthPoints = 0;
     this->currentSpace = NULL;
-    this->slotOne = NULL;
-    this->slotTwo = NULL;
+    this->inventory[0] = NULL;
+    this->inventory[1] = NULL;
 }
 
 /*********************************************************************
@@ -181,22 +181,7 @@ void Character::setSpace(Space* incSpace)
     this->currentSpace = incSpace;
 }
 
-InventoryObject* Character::getSlotOne()
+InventoryObject** Character::getInventory()
 {
-	return this->slotOne;
-}
-
-void Character::setSlotOne(InventoryObject* incItem)
-{
-    this->slotOne = incItem;
-}
-
-InventoryObject* Character::getSlotTwo()
-{
-    return this->slotTwo;
-}
-
-void Character::setSlotTwo(InventoryObject* incItem)
-{
-    this->slotTwo = incItem;
+	return this->inventory;
 }

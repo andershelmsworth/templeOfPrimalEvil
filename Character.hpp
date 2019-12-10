@@ -50,10 +50,7 @@ public:
     Space* getSpace();
     void setSpace(Space*);
 
-    InventoryObject* getSlotOne();
-    void setSlotOne(InventoryObject*);
-    InventoryObject* getSlotTwo();
-    void setSlotTwo(InventoryObject*);
+    InventoryObject** getInventory();
 
     //Member functions
     virtual int swing() = 0;
@@ -68,8 +65,7 @@ protected:
     std::string name;
     std::string color;
     Space* currentSpace;
-    InventoryObject* slotOne;
-    InventoryObject* slotTwo;
+    InventoryObject* inventory[2];
 };
 
 #endif // !CHARACTER_HPP
