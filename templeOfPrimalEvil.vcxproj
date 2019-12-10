@@ -155,6 +155,7 @@
     <ClInclude Include="Space.hpp" />
     <ClInclude Include="TempleFoyer.hpp" />
     <ClInclude Include="Tile.hpp" />
+    <ClInclude Include="TombOfTheGravediggers.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Amulet.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="ShadowKey.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="TempleFoyer.cpp" />
+    <ClCompile Include="TombOfTheGravediggers.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

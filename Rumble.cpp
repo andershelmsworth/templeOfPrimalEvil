@@ -19,6 +19,7 @@
 #include "ShadowKey.hpp"
 #include "LairOfTheSphinx.hpp"
 #include "MightySeal.hpp"
+#include "TombOfTheGravediggers.hpp"
 
 /*********************************************************************
 ** Rumble constructor
@@ -67,6 +68,7 @@ void Rumble::runRumble()
     Space* templeFoyer = new TempleFoyer;
     Space* sphinxLair = new LairOfTheSphinx;
     Space* mightySeal = new MightySeal;
+    Space* tomb = new TombOfTheGraveDiggers;
 
     jungleFloor->setSouth(templeFoyer);
     templeFoyer->setNorth(jungleFloor);
@@ -74,6 +76,8 @@ void Rumble::runRumble()
     sphinxLair->setNorth(templeFoyer);
     sphinxLair->setSouth(mightySeal);
     mightySeal->setNorth(sphinxLair);
+    mightySeal->setSouth(tomb);
+    tomb->setNorth(mightySeal);
 
     jungleFloor->setCharacter(playerCharacter);
     playerCharacter->setSpace(jungleFloor);
@@ -90,6 +94,7 @@ void Rumble::runRumble()
             //playerCharacter->setSpace(jungleFloor);
             jungleFloor->setCharacter(playerCharacter);
             std::cout << std::endl;
+            std::cout << "||||LEVEL 0||||" << std::endl;
             std::cout << "You are now on the Jungle Floor." << std::endl;
             std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
             std::cout << std::endl;
@@ -114,12 +119,14 @@ void Rumble::runRumble()
         else if (playerCharacter->getSpace()->getName() == "Temple Foyer") {
             templeFoyer->setCharacter(playerCharacter);
             std::cout << std::endl;
+            std::cout << "||||LEVEL -1||||" << std::endl;
             std::cout << "You are now in the Temple Foyer." << std::endl;
             std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
             std::cout << std::endl;
             std::cout << "A pile of scattered bones quivers and shakes." << std::endl;
             std::cout << "With a shudder, a spooky skellington springs to life! Slay him or die!" << std::endl;
             std::cout << std::endl;
+            std::cout << "What will you do?" << std::endl;
             std::cout << "1: Fight the skellington." << std::endl;
             std::cout << "2: Try to run away." << std::endl;
             int playerChoice = getInt(1, 2);
@@ -140,8 +147,8 @@ void Rumble::runRumble()
                 else {
                     std::cout << "On the skellington's ominously trembling bones, a shadowy key appears." << std::endl;
                     std::cout << "Something tells you you might have to fight him again if you return this way." << std::endl;
-                    std::cout << "Will you pick up the key?" << std::endl;
                     std::cout << std::endl;
+                    std::cout << "Will you pick up the key?" << std::endl;
                     std::cout << "1: Pick up the key." << std::endl;
                     std::cout << "2: Leave it where it is." << std::endl;
                     int keyChoice = getInt(1, 2);
@@ -214,6 +221,7 @@ void Rumble::runRumble()
         }
         else if (playerCharacter->getSpace()->getName() == "Lair of the Sphinx") {
             std::cout << std::endl;
+            std::cout << "||||LEVEL -2||||" << std::endl;
             std::cout << "You are now in the Lair of the Sphinx." << std::endl;
             std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
             std::cout << std::endl;
@@ -248,6 +256,7 @@ void Rumble::runRumble()
         }
         else if (playerCharacter->getSpace()->getName() == "The Mighty Seal") {
             std::cout << std::endl;
+            std::cout << "||||LEVEL -3||||" << std::endl;
             std::cout << "You are now in the Mighty Seal." << std::endl;
             std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
             std::cout << std::endl;
@@ -275,7 +284,6 @@ void Rumble::runRumble()
                     playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                     std::cout << "You descend the staircase, making your way deeper into the temple." << std::endl;
                     rounds = rounds - 5;
-                    won = true;
                 }
             }
             else if (sealSuccess == -1) {
@@ -300,6 +308,39 @@ void Rumble::runRumble()
                     rounds = rounds - 60;
                 }
             }
+        }
+        else if (playerCharacter->getSpace()->getName() == "Tomb of the Gravediggers"){
+            std::cout << std::endl;
+            std::cout << "||||LEVEL -4||||" << std::endl;
+            std::cout << "You are now in the Tomb of the Gravediggers." << std::endl;
+            std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
+            std::cout << std::endl;
+            tomb->setCharacter(playerCharacter);
+            tomb->draw(playerCharacter, passingArgument);
+
+            std::cout << std::endl;
+            std::cout << "Take the trapdoor down to the next level?" << std::endl;
+            std::cout << "1: Descend through the trapdoor [-5 minutes]" << std::endl;
+            std::cout << "2: Return up the staircase to the Mighty Seal [-5 minutes]" << std::endl;
+            int playerChoice = getInt(1, 2);
+
+            if (playerChoice == 0) {
+                //Space* tempSpace = templeQueue->getFront()->getNorth();
+                //templeQueue->removeBack();
+                //templeQueue->addFront(tempSpace);
+                playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
+                std::cout << "You make your way back upstairs, towards the Mighty Seal." << std::endl;
+                rounds = rounds - 5;
+            }
+            else if (playerChoice == 1) {
+                //Space* tempSpace = templeQueue->removeFront();
+                //templeQueue->addBack(tempSpace);
+                playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
+                std::cout << "You descend through the trapdoor, making your way deeper into the temple." << std::endl;
+                rounds = rounds - 5;
+                won = true;
+            }
+
         }
     }
 
