@@ -13,7 +13,10 @@ Space::Space()
     northWest = NULL;
     center = NULL;
 
-    occupiable = false;
+    character = NULL;
+
+    looted = false;
+    solved = false;
     contents = ' ';
 }
 
@@ -111,14 +114,24 @@ void Space::setCenter(Space* incSpace)
     this->center = incSpace;
 }
 
-bool Space::getOccupiable()
+bool Space::getSolved()
 {
-    return this->occupiable;
+    return this->solved;
 }
 
 void Space::setOccupialbe(bool incBool)
 {
-    this->occupiable = incBool;
+    this->solved = incBool;
+}
+
+bool Space::getLooted()
+{
+    return this->looted;
+}
+
+void Space::setLooted(bool incBool)
+{
+    this->looted = incBool;
 }
 
 char Space::getContents()

@@ -54,8 +54,11 @@ public:
     Space* getCenter();
     void setCenter(Space*);
 
-    bool getOccupiable();
+    bool getSolved();
     void setOccupialbe(bool);
+
+    bool getLooted();
+    void setLooted(bool);
 
     char getContents();
     void setContents(char);
@@ -80,7 +83,8 @@ protected:
     Space* northWest;
     Space* center;
 
-    bool occupiable;
+    bool solved;
+    bool looted;
     char contents;
     std::string name;
     Character* character;
