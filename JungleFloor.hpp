@@ -36,10 +36,9 @@ public:
     //Getters/Setters
     
     //Member functions
-    void draw();
+    int draw(Character*);
 
 private:
-    Character* character;
 };
 
 #endif // !JUNGLEFLOOR_HPP

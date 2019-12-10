@@ -14,6 +14,7 @@
 #include "JungleFloor.hpp"
 #include "Queue.hpp"
 #include "TempleFoyer.hpp"
+#include "Barbarian.hpp"
 
 /*********************************************************************
 ** Rumble constructor
@@ -51,7 +52,7 @@ void Rumble::runRumble()
 {
     //seeding random
     srand(time(0));
-    int rounds = 1;
+    int rounds = 60;
 
     bool won = false;
     bool dead = false;
@@ -67,7 +68,9 @@ void Rumble::runRumble()
     //Loop while both teams have characters
     while (won == false && dead == false) {
         if (templeQueue->getFront()->getName() == "Jungle Floor") {
+            std::cout << std::endl;
             std::cout << "You are now on the Jungle Floor." << std::endl;
+            std::cout << std::endl;
             std::cout << "Enter the door below to proceed into the temple." << std::endl;
             std::cout << "1: Enter the door." << std::endl;
             std::cout << "2: Run away and go home." << std::endl;
@@ -85,16 +88,20 @@ void Rumble::runRumble()
 
         }
         else if (templeQueue->getFront()->getName() == "Temple Foyer") {
-            std::cout << "You enter the temple foyer. A brutal barbarian blocks your way. Slay him or die!" << std::endl;
-
-            std::cout << "1: Fight the barbarian." << std::endl;
+            std::cout << std::endl;
+            std::cout << "You enter the temple foyer. A spooky skellington springs to life. Slay him or die!" << std::endl;
+            std::cout << std::endl;
+            std::cout << "1: Fight the skellington." << std::endl;
             std::cout << "2: Try to run away." << std::endl;
             int playerChoice = getInt(1, 2);
             if (playerChoice == 2) {
                 dead = true;
-                std::cout << "The barbarian caught up with you and ran you through with his sword. What an end!" << std::endl;
+                std::cout << "The skellington caught up with you and ran you through with his sword. What an end!" << std::endl;
             }
             else if (playerChoice == 1) {
+                int roundsElapsed = templeQueue->getFront()->draw(playerCharacter);
+                rounds = rounds - roundsElapsed;
+                std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
                 Space* tempSpace = templeQueue->removeFront();
                 templeQueue->addBack(tempSpace);
                 std::cout << "You descend the ladder to the next level." << std::endl;

@@ -34,7 +34,7 @@ public:
     ~TempleFoyer();
 
     //Member functions
-    void draw();
+    int draw(Character*);
 
 private:
 };

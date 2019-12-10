@@ -67,7 +67,7 @@ public:
     void setCharacter(Character*);
 
     //Member functions
-    virtual void draw() = 0;
+    virtual int draw(Character*) = 0;
 
 protected:
     Space* north;

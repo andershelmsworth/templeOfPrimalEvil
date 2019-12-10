@@ -10,6 +10,7 @@ JungleFloor::~JungleFloor()
 {
 }
 
-void JungleFloor::draw()
+int JungleFloor::draw(Character* playerCharacter)
 {
+	return 0;
 }

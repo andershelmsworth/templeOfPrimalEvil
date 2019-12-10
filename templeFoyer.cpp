@@ -1,4 +1,8 @@
-#include "templeFoyer.hpp"
+#include "TempleFoyer.hpp"
+#include "Barbarian.hpp"
+#include "HarryPotter.hpp"
+#include "Character.hpp"
+#include "Game.hpp"
 
 TempleFoyer::TempleFoyer()
 {
@@ -9,6 +13,13 @@ TempleFoyer::~TempleFoyer()
 {
 }
 
-void TempleFoyer::draw()
+int TempleFoyer::draw(Character* playerCharacter)
 {
+	int winner = 0;
+	Character* foyerBarb = new Barbarian;
+	Game* currentGame = new Game();
+	currentGame->startFight(playerCharacter, foyerBarb, winner);
+	winner = currentGame->getRounds();
+	delete currentGame;
+	return winner;
 }

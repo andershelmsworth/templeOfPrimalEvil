@@ -13,9 +13,6 @@
 #include "Game.hpp"
 #include "Character.hpp"
 #include "Barbarian.hpp"
-#include "Vampire.hpp"
-#include "BlueMen.hpp"
-#include "Medusa.hpp"
 #include "HarryPotter.hpp"
 
 /*********************************************************************
@@ -199,11 +196,11 @@ void Game::startFight(Character* incBlueChar, Character* incRedChar, int& winner
     
     //Output win msg
     if (getRedAlive() == false) {
-        std::cout << "Blue player wins the match!" << std::endl;
+        std::cout << "Player character wins the match!" << std::endl;
         winner = 0;
     }
     else if (getBlueAlive() == false) {
-        std::cout << "Red player wins the match!" << std::endl;
+        std::cout << "Enemy character wins the match!" << std::endl;
         winner = 1;
     }
 
@@ -222,8 +219,8 @@ void Game::blueTurn()
     std::cout << "******************************" << std::endl;
     std::cout << "Round #" << getRounds() << " - Blue's turn" << std::endl;
     std::cout << "******************************" << std::endl;
-    std::cout << "1a. Attacker type: " << blueChar->getName() << ", \"" << blueChar->getNickName() << "\"  (" << blueChar->getColor() << ")" << std::endl;
-    std::cout << "1b. Defender type: " << redChar->getName() << ", \"" << redChar->getNickName() << "\"  (" << redChar->getColor() << ")" << std::endl;
+    std::cout << "1a. Attacker type: " << blueChar->getName() << " (" << blueChar->getColor() << ")" << std::endl;
+    std::cout << "1b. Defender type: " << redChar->getName() << " (" << redChar->getColor() << ")" << std::endl;
     std::cout << "2. Defender Stats:" << std::endl;
     std::cout << "    Type: " << redChar->getName() << " (" << redChar->getColor() << ")" << std::endl;
     std::cout << "    Armor: " << redChar->getArmor() << std::endl;
@@ -239,7 +236,7 @@ void Game::blueTurn()
     //See if red died
     if (redChar->getStrengthPoints() <= 0) {
         setRedAlive(false);
-        std::cout << redChar->getColor() << " " << redChar->getName() << ", \"" << redChar->getNickName() << "\" died!" << std::endl;
+        std::cout << redChar->getColor() << " " << redChar->getName() << " died!" << std::endl;
         std::cout << "******************************" << std::endl;
         std::cout << "******************************" << std::endl;
         std::cout << std::endl;
@@ -259,9 +256,8 @@ void Game::redTurn()
     std::cout << "******************************" << std::endl;
     std::cout << "Round #" << getRounds() << " - Red's turn" << std::endl;
     std::cout << "******************************" << std::endl;
-    std::cout << "1a. Attacker type: " << redChar->getName() << ", \"" << redChar->getNickName() << "\"  (" << redChar->getColor() << ")" << std::endl;
-    std::cout << "1b. Defender type: " << blueChar->getName() << ", \"" << blueChar->getNickName() << "\"  (" << blueChar->getColor() << ")" << std::endl;
-    std::cout << "2. Defender Stats:" << std::endl;
+    std::cout << "1a. Attacker type: " << blueChar->getName() << " (" << blueChar->getColor() << ")" << std::endl;
+    std::cout << "1b. Defender type: " << redChar->getName() << " (" << redChar->getColor() << ")" << std::endl; std::cout << "2. Defender Stats:" << std::endl;
     std::cout << "    Type: " << blueChar->getName() << " (" << blueChar->getColor() << ")" << std::endl;
     std::cout << "    Armor: " << blueChar->getArmor() << std::endl;
     std::cout << "    Strength Points: " << blueChar->getStrengthPoints() << std::endl;
@@ -276,7 +272,7 @@ void Game::redTurn()
     //Check to see if blue died
     if (blueChar->getStrengthPoints() <= 0) {
         setBlueAlive(false);
-        std::cout << blueChar->getColor() << " " << blueChar->getName() << ", \"" << blueChar->getNickName() << "\" died!" << std::endl;
+        std::cout << blueChar->getColor() << " " << blueChar->getName() << " died!" << std::endl;
         std::cout << "******************************" << std::endl;
         std::cout << "******************************" << std::endl;
         std::cout << std::endl;
@@ -291,8 +287,6 @@ void Game::redTurn()
 *********************************************************************/
 void Game::deallocate()
 {
-    delete blueChar;
-    delete redChar;
     std::cout << std::endl;
     std::cout << "Deleted dynamic objects." << std::endl;
     std::cout << std::endl;
