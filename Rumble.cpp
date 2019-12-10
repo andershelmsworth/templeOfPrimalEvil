@@ -23,6 +23,7 @@
 #include "MightySeal.hpp"
 #include "TombOfTheGravediggers.hpp"
 #include "SubterraneanAtrium.hpp"
+#include "Rest.hpp"
 
 /*********************************************************************
 ** Rumble constructor
@@ -60,7 +61,7 @@ void Rumble::runRumble()
 {
     //seeding random
     srand(time(0));
-    int rounds = 60;
+    int rounds = 90;
 
     bool won = false;
     bool dead = false;
@@ -73,6 +74,7 @@ void Rumble::runRumble()
     Space* mightySeal = new MightySeal;
     Space* tomb = new TombOfTheGraveDiggers;
     Space* atrium = new SubterraneanAtrium;
+    Space* rest = new Rest;
 
     jungleFloor->setSouth(templeFoyer);
     templeFoyer->setNorth(jungleFloor);
@@ -84,7 +86,8 @@ void Rumble::runRumble()
     tomb->setNorth(mightySeal);
     tomb->setSouth(atrium);
     atrium->setNorth(tomb);
-
+    atrium->setSouth(rest);
+    rest->setNorth(atrium);
 
     jungleFloor->setCharacter(playerCharacter);
     playerCharacter->setSpace(jungleFloor);
@@ -103,25 +106,31 @@ void Rumble::runRumble()
             std::cout << std::endl;
             std::cout << "||||LEVEL 0||||" << std::endl;
             std::cout << "You are now on the Jungle Floor." << std::endl;
-            std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
-            std::cout << std::endl;
-            std::cout << "Enter the door below to proceed into the temple." << std::endl;
-            std::cout << "1: Enter the door [-5 minutes]" << std::endl;
-            std::cout << "2: Run away and go home." << std::endl;
-            int playerChoice = getInt(1, 2);
-            
-            if (playerChoice == 2) {
-                dead = true;
-                std::cout << "You gave up :( The sleeping god awoke and destroyed the world, and you along with it! Shame!" << std::endl;
-            }
-            else if (playerChoice == 1) {
-                rounds = rounds - 5;
-                //Space* tempSpace = templeQueue->removeFront();
-                //templeQueue->addBack(tempSpace);
-                playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
-                std::cout << "You descend through the door into the temple." << std::endl;
-            }
 
+            if (rest->getSolved() == true) {
+                won = true;
+            }
+            else if (rest->getSolved() == false) {
+                std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
+                std::cout << std::endl;
+                std::cout << "Enter the door below to proceed into the temple." << std::endl;
+                std::cout << "1: Enter the door [-5 minutes]" << std::endl;
+                std::cout << "2: Run away and go home." << std::endl;
+                int playerChoice = getInt(1, 2);
+
+                if (playerChoice == 2) {
+                    dead = true;
+                    std::cout << "You gave up :( The sleeping god awoke and destroyed the world, and you along with it! Shame!" << std::endl;
+                }
+                else if (playerChoice == 1) {
+                    rounds = rounds - 5;
+                    //Space* tempSpace = templeQueue->removeFront();
+                    //templeQueue->addBack(tempSpace);
+                    playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
+                    std::cout << "You descend through the door into the temple." << std::endl;
+                    jungleFloor->setCharacter(NULL);
+                }
+            }
         }
         else if (playerCharacter->getSpace()->getName() == "Temple Foyer") {
             templeFoyer->setCharacter(playerCharacter);
@@ -186,8 +195,11 @@ void Rumble::runRumble()
                             std::cout << "Your inventory is full. Destroy an item to pick it up?" << std::endl;
                             std::cout << "1: Delete item in slot one." << std::endl;
                             std::cout << "2: Delete item in slot two." << std::endl;
-                            std::cout << "3: Put the key back." << std::endl;
-                            int deleteChoice = getInt(1, 2);
+                            std::cout << "3: Put the key back (you'll ultimately decide to do this anyway if you own an important item)." << std::endl;
+                            int deleteChoice = getInt(1, 3);
+                            if (mightySeal->getLooted() == true || atrium->getLooted() == true) {
+                                deleteChoice = 3;
+                            }
                             if (deleteChoice == 1) {
                                 InventoryObject** currentInventory = playerCharacter->getInventory();
                                 delete currentInventory[0];
@@ -201,7 +213,7 @@ void Rumble::runRumble()
                                 std::cout << "Wise move. You destroy the item in slot two, then place the key in inventory slot two." << std::endl;
                             }
                             else if (deleteChoice == 3) {
-                                std::cout << "Seems like a bad idea! But okay. You put the key back. It dissapates into mist as you walk away." << std::endl;
+                                std::cout << "You put the key back. It dissapates into mist as you walk away." << std::endl;
                             }
                         }
 
@@ -218,6 +230,7 @@ void Rumble::runRumble()
                         //templeQueue->addFront(tempSpace);
                         playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
                         std::cout << "You return through the door, making your way back to the surface." << std::endl;
+                        templeFoyer->setCharacter(NULL);
                         rounds = rounds - 5;
                     }
                     else if (playerChoice == 1) {
@@ -225,6 +238,7 @@ void Rumble::runRumble()
                         //templeQueue->addBack(tempSpace);
                         playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                         std::cout << "You descend the ladder, making your way deeper into the temple." << std::endl;
+                        templeFoyer->setCharacter(NULL);
                         rounds = rounds - 5;
                     }
                 }
@@ -254,6 +268,7 @@ void Rumble::runRumble()
                     //templeQueue->addFront(tempSpace);
                     playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
                     std::cout << "You return up the ladder, making your way back to the foyer." << std::endl;
+                    sphinxLair->setCharacter(NULL);
                     rounds = rounds - 5;
                 }
                 else if (playerChoice == 1) {
@@ -261,6 +276,7 @@ void Rumble::runRumble()
                     //templeQueue->addBack(tempSpace);
                     playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                     std::cout << "You descend the steps, making your way deeper into the temple." << std::endl;
+                    sphinxLair->setCharacter(NULL);
                     rounds = rounds - 5;
                 }
             }
@@ -286,6 +302,7 @@ void Rumble::runRumble()
                     //templeQueue->addFront(tempSpace);
                     playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
                     std::cout << "You make your way back towards the Lair of the Sphinx." << std::endl;
+                    mightySeal->setCharacter(NULL);
                     rounds = rounds - 5;
                 }
                 else if (playerChoice == 1) {
@@ -293,6 +310,7 @@ void Rumble::runRumble()
                     //templeQueue->addBack(tempSpace);
                     playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                     std::cout << "You descend the staircase, making your way deeper into the temple." << std::endl;
+                    mightySeal->setCharacter(NULL);
                     rounds = rounds - 5;
                 }
             }
@@ -341,6 +359,7 @@ void Rumble::runRumble()
                 playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
                 std::cout << "You make your way back upstairs, towards the Mighty Seal." << std::endl;
                 rounds = rounds - 5;
+                tomb->setCharacter(NULL);
             }
             else if (playerChoice == 1) {
                 //Space* tempSpace = templeQueue->removeFront();
@@ -348,6 +367,7 @@ void Rumble::runRumble()
                 playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                 std::cout << "You descend through the trapdoor, making your way deeper into the temple." << std::endl;
                 rounds = rounds - 5;
+                tomb->setCharacter(NULL);
             }
 
         }
@@ -373,6 +393,7 @@ void Rumble::runRumble()
                     //templeQueue->addFront(tempSpace);
                     playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
                     std::cout << "You make your way back up towards the Tomb." << std::endl;
+                    atrium->setCharacter(NULL);
                     rounds = rounds - 5;
                 }
                 else if (progressChoice == 1) {
@@ -380,10 +401,36 @@ void Rumble::runRumble()
                     //templeQueue->addBack(tempSpace);
                     playerCharacter->setSpace(playerCharacter->getSpace()->getSouth());
                     std::cout << "You descend to the final level of the temple." << std::endl;
+                    atrium->setCharacter(NULL);
                     rounds = rounds - 5;
-                    won = true;
                 }
             }
+        }
+        else if (playerCharacter->getSpace()->getName() == "Nameless One's Rest") {
+            std::cout << std::endl;
+            std::cout << "||||LEVEL -6||||" << std::endl;
+            std::cout << "You have arrived at the Nameless One's Rest." << std::endl;
+            std::cout << rounds << " minutes remain until automatic detonation." << std::endl;
+            std::cout << std::endl;
+            rest->setCharacter(playerCharacter);
+            rest->draw(playerCharacter, passingArgument);
+
+            std::cout << "Will you return to the atrium?" << std::endl;
+            std::cout << "1: Head back to the atrium [-5 minutes]" << std::endl;
+            std::cout << "2: Give up and stay here [-500 minutes]" << std::endl;
+            int progressChoice = getInt(1, 2);
+            if (progressChoice == 2) {
+                rounds = rounds - 500;
+            }
+            else if (progressChoice == 1) {
+                //Space* tempSpace = templeQueue->removeFront();
+                //templeQueue->addBack(tempSpace);
+                playerCharacter->setSpace(playerCharacter->getSpace()->getNorth());
+                std::cout << "You make your way back to the atrium." << std::endl;
+                atrium->setCharacter(NULL);
+                rounds = rounds - 5;
+            }
+
         }
 
     }
@@ -392,6 +439,8 @@ void Rumble::runRumble()
         std::cout << "The bomb exploded while you were inside the blast zone! What a way to go..." << std::endl;
     }
     else if (won == true) {
+        std::cout << "The temple explodes in a blinding fireball as you walk off into the distance." << std::endl;
+        std::cout << "But you don't look fazed. Everyone knows cool people don't look at explosions." << std::endl;
         std::cout << "You won! Congratulations!" << std::endl;
     }
 

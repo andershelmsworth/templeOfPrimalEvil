@@ -164,13 +164,13 @@ int MightySeal::draw(Character* incPlayerCharacter, int& passingArg)
                     std::cout << "2: Delete item in slot two." << std::endl;
                     std::cout << "3: Put the amulet back." << std::endl;
                     int deleteChoice = getInt(1, 2);
-                    if (deleteChoice == 1) {
+                    if (deleteChoice == 1 && incPlayerCharacter->getInventory()[0]->getName() != "Focusing Lens") {
                         InventoryObject** currentInventory = incPlayerCharacter->getInventory();
                         delete currentInventory[0];
                         currentInventory[0] = theAmulet;
                         std::cout << "Wise move. You destroy the item in slot one, then place the key in inventory slot one." << std::endl;
                     }
-                    else if (deleteChoice == 2) {
+                    else if (deleteChoice == 2 && incPlayerCharacter->getInventory()[1]->getName() != "Focusing Lens") {
                         InventoryObject** currentInventory = incPlayerCharacter->getInventory();
                         delete currentInventory[1];
                         currentInventory[1] = theAmulet;
@@ -178,6 +178,9 @@ int MightySeal::draw(Character* incPlayerCharacter, int& passingArg)
                     }
                     else if (deleteChoice == 3) {
                         std::cout << "Seems like a bad idea! But okay. You put the amulet back." << std::endl;
+                    }
+                    else {
+                        std::cout << "You can't delete that item. Better come back later and try a different inventory space if you want the amulet." << std::endl;
                     }
                 }
 

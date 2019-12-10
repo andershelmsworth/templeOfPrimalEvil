@@ -151,6 +151,7 @@
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="MightySeal.hpp" />
     <ClInclude Include="Queue.hpp" />
+    <ClInclude Include="Rest.hpp" />
     <ClInclude Include="Rumble.hpp" />
     <ClInclude Include="ShadowKey.hpp" />
     <ClInclude Include="Space.hpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MightySeal.cpp" />
     <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="Rest.cpp" />
     <ClCompile Include="Rumble.cpp" />
     <ClCompile Include="ShadowKey.cpp" />
     <ClCompile Include="Space.cpp" />
