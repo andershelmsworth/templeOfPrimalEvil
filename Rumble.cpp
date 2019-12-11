@@ -1,8 +1,9 @@
 /*********************************************************************
-** Program Name: Dungeon Rumble
+** Program Name: The Temple of Primal Evil
 ** Author: Andrew Helmsworth
-** Date: 2019/11/11
-** Description: Characters in Queues face off in a fantasy combat sim
+** Date: 2019/12/08
+** Description: Player Character object traverses linked list of Space objects,
+** Description: ...& interacts with Spaces and InventoryObjects in a timed scenario.
 ** Sources: See works cited at end-of-program comment-block in main.cpp.
 *********************************************************************/
 

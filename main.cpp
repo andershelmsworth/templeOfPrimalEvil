@@ -1,9 +1,9 @@
 /*********************************************************************
-** Program Name: Fibonacci Timing Tool
+** Program Name: The Temple of Primal Evil
 ** Author: Andrew Helmsworth
-** Date: 2019/12/05
-** Description: Compares the time required to calculate a Fibonacci number...
-** Description: ...with iteration vs. recursion.
+** Date: 2019/12/08
+** Description: Player Character object traverses linked list of Space objects,
+** Description: ...& interacts with Spaces and InventoryObjects in a timed scenario.
 ** Sources: See works cited at end-of-program comment-block in main.cpp.
 *********************************************************************/
 
@@ -18,8 +18,8 @@
 /*********************************************************************
 ** main function
 ** Paramaters are: none
-** What it does: Runs Fibonacci functions until user terminates
-** Returns: No return data.
+** What it does: Runs game functions until user terminates
+** Returns: 0
 *********************************************************************/
 int main() {
     Menu menu;
