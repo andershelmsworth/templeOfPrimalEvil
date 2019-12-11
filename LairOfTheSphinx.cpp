@@ -14,7 +14,7 @@ LairOfTheSphinx::~LairOfTheSphinx()
 int LairOfTheSphinx::draw(Character* playerCharacter, int& incPassingArg)
 {
 	std::cout << "The Sphinx demands you answer its riddle!" << std::endl;
-	std::cout << "\"WHAT NUMBER, BETWEEN 1-20, AM I THINKING OF?\" it bellows." << std::endl;
+	std::cout << "\"WHAT NUMBER, FROM 1-20, AM I THINKING OF?\" it bellows." << std::endl;
 
     Die sphinxDie(20);
     int sphinxChoice = sphinxDie.roll(20);
@@ -63,7 +63,7 @@ int LairOfTheSphinx::getInt(int min, int max)
 
     while (keepLooping == true) {
         //CITATION: Herle, johnathan, Johnston, Italia, Works Cited
-        std::cout << "Enter an integer between " << min << " and " << max << ":" << std::endl;
+        std::cout << "Enter an integer from " << min << " to " << max << ":" << std::endl;
         std::getline(std::cin, userInput);
 
         //Probably don't need to check for input failure, but being intentionally paranoid

@@ -47,7 +47,7 @@ int TombOfTheGraveDiggers::getInt(int min, int max)
 
     while (keepLooping == true) {
         //CITATION: Herle, johnathan, Johnston, Italia, Works Cited
-        std::cout << "Enter an integer between " << min << " and " << max << ":" << std::endl;
+        std::cout << "Enter an integer from " << min << " to " << max << ":" << std::endl;
         std::getline(std::cin, userInput);
 
         //Probably don't need to check for input failure, but being intentionally paranoid
