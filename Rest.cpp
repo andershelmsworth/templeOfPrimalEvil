@@ -10,15 +10,33 @@
 //Inclusions
 #include "Rest.hpp"
 
+/*********************************************************************
+** Rest default constructor
+** Paramaters are: none
+** What it does: sets name, sets character to null
+** Returns: No return data.
+*********************************************************************/
 Rest::Rest()
 {
     name = "Nameless One's Rest";
 }
 
+/*********************************************************************
+** Rest destructor
+** Paramaters are: none
+** What it does: destroys Rest
+** Returns: No return data.
+*********************************************************************/
 Rest::~Rest()
 {
 }
 
+/*********************************************************************
+** MightySeal draw
+** Paramaters are: none
+** What it does: runs level interaction
+** Returns: 0
+*********************************************************************/
 int Rest::draw(Character* incCharacter, int& passingArg)
 {
     if (this->solved == false) {
@@ -29,6 +47,7 @@ int Rest::draw(Character* incCharacter, int& passingArg)
         std::string slotOne = "";
         std::string slotTwo = "";
 
+        //Check if slots are null, initialize names if not
         if (incCharacter->getInventory()[0] != NULL) {
             slotOne = incCharacter->getInventory()[0]->getName();
         }
@@ -38,12 +57,14 @@ int Rest::draw(Character* incCharacter, int& passingArg)
         }
 
         if ((slotOne == "Golden Amulet" && slotTwo == "Focusing Lens") || (slotOne == "Focusing Lens" && slotTwo == "Golden Amulet")) {
+            //Has both items, ask to place
             std::cout << "Will you place the items in their sockets?" << std::endl;
             std::cout << "1: Place items." << std::endl;
             std::cout << "2: Turn back." << std::endl;
             int playerChoice = getInt(1, 2);
 
             if (playerChoice == 1) {
+                //Decided to place, solved to true
                 std::cout << "You place the amulet and the lens on either side of the shaft." << std::endl;
                 std::cout << "The bars slide aside, revealing a bomb-sized hole underneath the god." << std::endl;
                 std::cout << "You unstrap the bomb from your back and set it in place." << std::endl;
@@ -55,11 +76,13 @@ int Rest::draw(Character* incCharacter, int& passingArg)
 
             }
             else if (playerChoice == 2) {
+                //Decided to leave, returning to Rumble
                 std::cout << "You turn back from the sealed door." << std::endl;
                 return 0;
             }
         }
         else {
+            //Missing items, returning to Rumble
             std::cout << "You clearly lack an item required to continue." << std::endl;
             return 0;
         }

@@ -21,10 +21,10 @@
 #define MIGHTYSEAL_HPP
 
 /*********************************************************************
-** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
-** How to use it: all functionality tied to showMenu()
+** MightySeal class
+** Abstraction it represents: subclass of Corridor
+** What it's for: playing level -3
+** How to use it: default ctor, draw()
 *********************************************************************/
 class MightySeal : public Corridor
 {
@@ -40,4 +40,4 @@ public:
 private:
 };
 
-#endif // !JUNGLEFLOOR_HPP
+#endif // !MIGHTYSEAL_HPP

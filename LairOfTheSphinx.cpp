@@ -11,47 +11,72 @@
 #include "LairOfTheSphinx.hpp"
 #include "Die.hpp"
 
+/*********************************************************************
+** LairOfTheSphinx default constructor
+** Paramaters are: none
+** What it does: sets name, sets character to null
+** Returns: No return data.
+*********************************************************************/
 LairOfTheSphinx::LairOfTheSphinx()
 {
     name = "Lair of the Sphinx";
     character = NULL;
 }
 
+/*********************************************************************
+** LairOfTheSphinx destructor
+** Paramaters are: none
+** What it does: destroys LairOfTheSphinx
+** Returns: No return data.
+*********************************************************************/
 LairOfTheSphinx::~LairOfTheSphinx()
 {
 }
 
+/*********************************************************************
+** LairOfTheSphinx draw
+** Paramaters are: none
+** What it does: runs level interaction
+** Returns: number of guesses reqd
+*********************************************************************/
 int LairOfTheSphinx::draw(Character* playerCharacter, int& incPassingArg)
 {
 	std::cout << "The Sphinx demands you answer its riddle!" << std::endl;
 	std::cout << "\"WHAT NUMBER, FROM 1-20, AM I THINKING OF?\" it bellows." << std::endl;
 
+    //Initialize and roll d20 of chosen number
     Die sphinxDie(20);
     int sphinxChoice = sphinxDie.roll(20);
 
     bool keepLooping = true;
     int guessCounter = 1;
 
+    //Keep looping until player guesses
     while (keepLooping == true) {
         int playerGuess = getInt(1, 20);
 
         if (playerGuess < sphinxChoice) {
+            //Was too low, repeating and incrementing guess
             std::cout << "\"TOO LOW. TRY AGAIN!\"" << std::endl;
             guessCounter++;
         }
         else if (playerGuess > sphinxChoice) {
+            //Was too high, repeating and incrementing guess
             std::cout << "\"TOO HIGH. TRY AGAIN!\"" << std::endl;
             guessCounter++;
         }
         else if (playerGuess == sphinxChoice) {
+            //Returning to Rumble since guessed
             std::cout << "\"VERY GOOD! YOU MAY PROCEED.\"" << std::endl;
             keepLooping = false;
         }
     }
 
+    //List guesses taken
     std::cout << guessCounter << " minutes elapsed while guessing the answer." << std::endl;
     std::cout << std::endl;
 
+    //Return guesses taken, and set passingArg
     incPassingArg = guessCounter;
 	return guessCounter;
 }

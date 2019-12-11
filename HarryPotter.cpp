@@ -132,7 +132,7 @@ void HarryPotter::defend(int incDamage)
         //Set new SP
         setStrengthPoints(20);
         std::cout << "Extra life replenished." << std::endl;
-        //Set 1UP to 0
+        //Keeping 1UP so player just loses time
         setExtraLife(1);
         std::cout << "6. " << getColor() << " " << getName() << "'s updated strength point total after subtracting damage (and resurrection boost): " << getStrengthPoints() << std::endl;
     }

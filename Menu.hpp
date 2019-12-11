@@ -19,8 +19,8 @@
 
 /*********************************************************************
 ** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
+** Abstraction it represents: menu for running game functions
+** What it's for: building and running game
 ** How to use it: all functionality tied to showMenu()
 *********************************************************************/
 class Menu
@@ -32,8 +32,6 @@ public:
 
     //Member functions
     void showMenu();
-    void runFibonacciR(int);
-    void runFibonacciNR(int);
     int getInt(int, int);
 
 private:

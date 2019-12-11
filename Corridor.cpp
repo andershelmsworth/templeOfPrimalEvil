@@ -10,10 +10,22 @@
 //Inclusions
 #include "Corridor.hpp"
 
+/*********************************************************************
+** Corridor default constructor
+** Paramaters are: none
+** What it does: not used, abstract
+** Returns: No return data.
+*********************************************************************/
 Corridor::Corridor()
 {
 }
 
+/*********************************************************************
+** Corridor destructor
+** Paramaters are: none
+** What it does: virtual destructor
+** Returns: No return data.
+*********************************************************************/
 Corridor::~Corridor()
 {
 }

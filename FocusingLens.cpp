@@ -9,11 +9,23 @@
 //Inclusions
 #include "FocusingLens.hpp"
 
+/*********************************************************************
+** FocusingLens default constructor
+** Paramaters are: none
+** What it does: Initializes FocusingLens name
+** Returns: No return data.
+*********************************************************************/
 FocusingLens::FocusingLens()
 {
 	name = "Focusing Lens";
 }
 
+/*********************************************************************
+** FocusingLens destructor
+** Paramaters are: none
+** What it does: destroys FocusingLens
+** Returns: No return data.
+*********************************************************************/
 FocusingLens::~FocusingLens()
 {
 }

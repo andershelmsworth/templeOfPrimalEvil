@@ -73,6 +73,6 @@ LearnCpp.Com. "5.10 — std::cin, extraction, and dealing with invalid text input.
 LearnCpp.Com. "8.9 — Class code and header files." LearnCpp.com Tutorials, https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files/.
 
 Rajput, Abhishek. "delete() in C++." GeeksforGeeks, https://www.geeksforgeeks.org/delete-in-c/.
-
+.
 Tusher, Tunvir Rahman "When to use virtual destructors?" StackOverflow, https://stackoverflow.com/questions/461203/when-to-use-virtual-destructors.
     */

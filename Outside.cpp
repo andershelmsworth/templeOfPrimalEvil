@@ -10,10 +10,22 @@
 //Inclusions
 #include "Outside.hpp"
 
+/*********************************************************************
+** Outside default constructor
+** Paramaters are: none
+** What it does: not used, abstract
+** Returns: No return data.
+*********************************************************************/
 Outside::Outside()
 {
 }
 
+/*********************************************************************
+** Outside destructor
+** Paramaters are: none
+** What it does: virtual destructor
+** Returns: No return data.
+*********************************************************************/
 Outside::~Outside()
 {
 }

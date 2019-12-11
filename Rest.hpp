@@ -21,10 +21,10 @@
 #define REST_HPP
 
 /*********************************************************************
-** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
-** How to use it: all functionality tied to showMenu()
+** Rest class
+** Abstraction it represents: subclass of Chamber
+** What it's for: playing level -6
+** How to use it: default ctor, draw()
 *********************************************************************/
 class Rest : public Chamber
 {
@@ -40,4 +40,4 @@ public:
 private:
 };
 
-#endif // !JUNGLEFLOOR_HPP
+#endif // !REST_HPP

@@ -10,30 +10,51 @@
 //Inclusions
 #include "TombOfTheGravediggers.hpp"
 
+/*********************************************************************
+** TombOfTheGraveDiggers default constructor
+** Paramaters are: none
+** What it does: sets name, sets character to null
+** Returns: No return data.
+*********************************************************************/
 TombOfTheGraveDiggers::TombOfTheGraveDiggers()
 {
     name = "Tomb of the Gravediggers";
 }
 
+/*********************************************************************
+** TombOfTheGraveDiggers destructor
+** Paramaters are: none
+** What it does: destroys TombOfTheGraveDiggers
+** Returns: No return data.
+*********************************************************************/
 TombOfTheGraveDiggers::~TombOfTheGraveDiggers()
 {
 }
 
+/*********************************************************************
+** TombOfTheGraveDiggers draw
+** Paramaters are: none
+** What it does: runs level interaction
+** Returns: 0
+*********************************************************************/
 int TombOfTheGraveDiggers::draw(Character* incCharacter, int& passingArg)
 {
     std::cout << "Before you stands an edifice, inscribed with the names of the lost souls who died building this foul place." << std::endl;
     std::cout << std::endl;
     std::cout << "The whispers of the damned seem to have something important to tell you." << std::endl;
 
+    //Ask to listen to spirits
     std::cout << "1: Listen to the spirits." << std::endl;
     std::cout << "2: Ignore them." << std::endl;
 
     int playerChoice = getInt(1, 2);
 
     if (playerChoice == 2) {
+        //Decided not to listen
         std::cout << "You close your ears to the spirits, whilst they curse the day you were born." << std::endl;
     }
     else if (playerChoice == 1) {
+        //Decided to listen
         std::cout << "\"3! 1! then 2!\" shout the spirits." << std::endl;
         std::cout << "Odd message from the afterlife, but seems important. You should probably remember this sequence." << std::endl;
     }

@@ -22,10 +22,10 @@
 class Character;
 
 /*********************************************************************
-** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
-** How to use it: all functionality tied to showMenu()
+** Space class
+** Abstraction it represents: Arch-type of Space children
+** What it's for: describing a space type, linked list pointers
+** How to use it: currently abstract, do not instantiate
 *********************************************************************/
 class Space
 {
@@ -35,6 +35,7 @@ public:
     virtual ~Space() = 0;
 
     //Getters/Setters
+    //Cardinal list pointers
     Space* getNorth();
     void setNorth(Space*);
     Space* getNorthEast();
@@ -54,25 +55,25 @@ public:
     Space* getCenter();
     void setCenter(Space*);
 
+    //Attribute mutators
     bool getSolved();
     void setOccupialbe(bool);
-
     bool getLooted();
     void setLooted(bool);
-
     char getContents();
     void setContents(char);
-
     std::string getName();
     void setName(std::string);
 
+    //Character mutators
     Character* getCharacter();
     void setCharacter(Character*);
 
-    //Member functions
+    //Overridden by level fxns
     virtual int draw(Character*, int&) = 0;
 
 protected:
+    //Space pointers
     Space* north;
     Space* northEast;
     Space* east;
@@ -83,6 +84,7 @@ protected:
     Space* northWest;
     Space* center;
 
+    //Attributes
     bool solved;
     bool looted;
     char contents;

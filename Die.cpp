@@ -3,7 +3,7 @@
 ** Author: Andrew Helmsworth
 ** Date: 2019/12/08
 ** Description: Player Character object traverses linked list of Space objects,
-** Description: ...& interacts with Spaces and InventoryObjects in a timed scenario.
+** Description: ...& interacts with Spaces and InventoryObjects in a timed scenario
 ** Sources: See works cited at end-of-program comment-block in main.cpp.
 *********************************************************************/
 

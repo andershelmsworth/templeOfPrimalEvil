@@ -11,11 +11,23 @@
 //Inclusions
 #include "ShadowKey.hpp"
 
+/*********************************************************************
+** ShadowKey default constructor
+** Paramaters are: none
+** What it does: Initializes ShadowKey name
+** Returns: No return data.
+*********************************************************************/
 ShadowKey::ShadowKey()
 {
 	name = "Shadowy Key";
 }
 
+/*********************************************************************
+** ShadowKey destructor
+** Paramaters are: none
+** What it does: destroys ShadowKey
+** Returns: No return data.
+*********************************************************************/
 ShadowKey::~ShadowKey()
 {
 }

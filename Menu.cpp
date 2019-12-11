@@ -43,7 +43,7 @@ Menu::~Menu()
 /*********************************************************************
 ** ShowMenu fxn
 ** Paramaters are: none
-** What it does: runs the recursive and iterative menu functions
+** What it does: spins up a game if user chooses, then quits or replays
 ** Returns: none
 *********************************************************************/
 void Menu::showMenu()
@@ -51,7 +51,7 @@ void Menu::showMenu()
     std::cout << "Welcome to the Temple of Primal Evil!" << std::endl;
     int firstRun = 0;
 
-    //Loop as long as 6 isn't selected.
+    //Loop as long as 2 isn't selected.
     while (firstRun == 0) {
         //Showing options
         std::cout << std::endl;
@@ -64,6 +64,7 @@ void Menu::showMenu()
         int selection = getInt(1, 2);
 
         if (selection == 1) {
+            //Intro text
             std::cout << std::endl;
             std::cout << "||||THE TEMPLE OF PRIMAL EVIL||||" << std::endl;
             std::cout << std::endl;
@@ -73,8 +74,10 @@ void Menu::showMenu()
             std::cout << "Descend to the bottom of the temple, plant your bomb, and make your escape before the bomb detonates!" << std::endl;
             std::cout << std::endl;
 
+            //Build new game, run it
             Rumble* theRumble = new Rumble;
             theRumble->runRumble();
+            //Free game memory
             delete theRumble;
         }
         else if (selection == 2) {

@@ -107,9 +107,9 @@ void Queue::addBack(Space* incSpace)
 }
 
 /*********************************************************************
-** addBack
+** addFront
 ** Paramaters are: int of incoming value
-** What it does: adds a new node to the end of the list
+** What it does: adds a new node to the head of the list
 ** Returns: none (void)
 *********************************************************************/
 void Queue::addFront(Space* incSpace)
@@ -265,6 +265,12 @@ Space* Queue::removeFront()
     }
 }
 
+/*********************************************************************
+** removeBack
+** Paramaters are: none
+** What it does: deletes node at tail and resets head pointer correctly
+** Returns: none (void)
+*********************************************************************/
 Space* Queue::removeBack()
 {
     //Check if empty

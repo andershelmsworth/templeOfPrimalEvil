@@ -20,10 +20,10 @@
 #define CHAMBER_HPP
 
 /*********************************************************************
-** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
-** How to use it: all functionality tied to showMenu()
+** Chamber class
+** Abstraction it represents: subclass of Space
+** What it's for: describing a space type
+** How to use it: currently abstract, do not instantiate
 *********************************************************************/
 class Chamber : public Space
 {
@@ -38,4 +38,4 @@ public:
 private:
 };
 
-#endif // !JUNGLEFLOOR_HPP
+#endif // !CHAMBER_HPP

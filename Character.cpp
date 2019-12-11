@@ -172,16 +172,34 @@ void Character::setColor(std::string incColor)
     this->color = incColor;
 }
 
+/*********************************************************************
+** Space getter
+** Paramaters are: Space pointer
+** What it does: sets Space value
+** Returns: none
+*********************************************************************/
 Space* Character::getSpace()
 {
     return this->currentSpace;
 }
 
+/*********************************************************************
+** Space getter
+** Paramaters are: none
+** What it does: gets Space value
+** Returns: Space pointer
+*********************************************************************/
 void Character::setSpace(Space* incSpace)
 {
     this->currentSpace = incSpace;
 }
 
+/*********************************************************************
+** InventoryObject getter
+** Paramaters are: none
+** What it does: gets InventoryObject value
+** Returns: InventoryObject pointer
+*********************************************************************/
 InventoryObject** Character::getInventory()
 {
 	return this->inventory;

@@ -21,8 +21,8 @@
 
 /*********************************************************************
 ** Rumble class
-** Abstraction it represents: tournament pitting Queues against each other
-** What it's for: running game and Queue functions
+** Abstraction it represents: main game and level functions
+** What it's for: running game and level functions
 ** How to use it: all functionality tied to runRumble()
 *********************************************************************/
 class Rumble
@@ -43,6 +43,7 @@ public:
 
     //Other member functions
     void runRumble();
+    int getRounds();
     int getInt(int, int);
 
 private:
@@ -54,4 +55,4 @@ private:
     int redScore;
 };
 
-#endif // !MENU_HPP
+#endif // !RUMBLE_HPP

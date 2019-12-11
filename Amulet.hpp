@@ -21,10 +21,10 @@
 #define AMULET_HPP
 
 /*********************************************************************
-** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
-** How to use it: all functionality tied to showMenu()
+** Amulet class
+** Abstraction it represents: required item for game progression
+** What it's for: sits in player inventory when collected
+** How to use it: default constructor
 *********************************************************************/
 class Amulet : public InventoryObject
 {
@@ -33,11 +33,8 @@ public:
     Amulet();
     ~Amulet();
 
-    //Member functions
-
-
 private:
 
 };
 
-#endif // !JUNGLEFLOOR_HPP
+#endif // !AMULET_HPP

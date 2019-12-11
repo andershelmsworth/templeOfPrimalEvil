@@ -13,24 +13,44 @@
 #include "FocusingLens.hpp"
 #include "InventoryObject.hpp"
 
+/*********************************************************************
+** SubterraneanAtrium default constructor
+** Paramaters are: none
+** What it does: sets name, sets character to null
+** Returns: No return data.
+*********************************************************************/
 SubterraneanAtrium::SubterraneanAtrium()
 {
     name = "Subterranean Atrium";
 }
 
+/*********************************************************************
+** SubterraneanAtrium destructor
+** Paramaters are: none
+** What it does: destroys SubterraneanAtrium
+** Returns: No return data.
+*********************************************************************/
 SubterraneanAtrium::~SubterraneanAtrium()
 {
 }
 
+/*********************************************************************
+** SubterraneanAtrium draw
+** Paramaters are: none
+** What it does: runs level interaction
+** Returns: 0
+*********************************************************************/
 int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
 {
     std::cout << "Somehow, a shaft of sunlight shines through the skylight above, bathing the room in a golden glow." << std::endl;
     
+    //Unsolved
     if (this->solved == false) {
         std::cout << "Three mirrors have been installed around the perimeter." << std::endl;
         std::cout << "Something tells you they're meant to illuminate the jewel above the door before you." << std::endl;
         std::cout << std::endl;
 
+        //Ask for mirror pos
         std::cout << "How will you orient the first mirror?" << std::endl;
         std::cout << "1: Position 1." << std::endl;
         std::cout << "2: Position 2." << std::endl;
@@ -38,6 +58,7 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
         int mirrorOne = getInt(1, 3);
         std::cout << std::endl;
 
+        //Ask for mirror pos
         std::cout << "How will you orient the second mirror?" << std::endl;
         std::cout << "1: Position 1." << std::endl;
         std::cout << "2: Position 2." << std::endl;
@@ -45,6 +66,7 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
         int mirrorTwo = getInt(1, 3);
         std::cout << std::endl;
 
+        //Ask for mirror pos
         std::cout << "How will you orient the first mirror?" << std::endl;
         std::cout << "1: Position 1." << std::endl;
         std::cout << "2: Position 2." << std::endl;
@@ -53,6 +75,8 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
         std::cout << std::endl;
 
         std::cout << "You position the mirrors to orientations " << mirrorOne << " " << mirrorTwo << " " << mirrorThree << " and hold your breath." << std::endl;
+        
+        //Wrong pos, killing player
         if (mirrorOne != 3 || mirrorTwo != 1 || mirrorThree != 2) {
             std::cout << "Ear-splitting sirens sound all around you!" << std::endl;
             std::cout << "A powerful laser is emitted from the jewel and focuses on the bomb on your back." << std::endl;
@@ -61,6 +85,7 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
             return -1;
         }
         else if (mirrorOne == 3 && mirrorTwo == 1 && mirrorThree == 2) {
+            //Correct pos, solving
             std::cout << "Success! The jewel glows red, and the door in front of you slides open." << std::endl;
             this->solved = true;
             std::cout << "The focusing lens in front of the jewel pops out of its socket." << std::endl;
@@ -68,17 +93,21 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
         }
     }
     if (this->solved == true && this->looted == false) {
+        //Unlooted, offering lens
         std::cout << "Will you take the focusing lens with you?" << std::endl;
         std::cout << std::endl;
+        //Ask to take
         std::cout << "1: Take the lens." << std::endl;
         std::cout << "2: Leave the lens in place." << std::endl;
         int lensChoice = getInt(1, 2);
         if (lensChoice == 1) {
+            //Pick up and initialize lens
             InventoryObject* theLens = new FocusingLens;
             std::cout << std::endl;
             std::cout << "Grabbed the Focusing Lens." << std::endl;
             std::cout << std::endl;
             if (incCharacter->getInventory()[0] == NULL) {
+                //Slot one empty, placing and solving
                 InventoryObject** currentInventory = incCharacter->getInventory();
                 currentInventory[0] = theLens;
                 std::cout << std::endl;
@@ -87,6 +116,7 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
                 this->looted = true;
             }
             else if (incCharacter->getInventory()[0] != NULL && incCharacter->getInventory()[1] == NULL) {
+                //Slot two empty, placing and solving
                 InventoryObject** currentInventory = incCharacter->getInventory();
                 currentInventory[1] = theLens;
                 std::cout << std::endl;
@@ -99,12 +129,14 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
                 bool loopDelete = true;
 
                 while (loopDelete == true){
+                    //Inventory full, ask to delete
                     std::cout << "Your inventory is full. Destroy an item to pick it up?" << std::endl;
                     std::cout << "1: Delete item in slot one." << std::endl;
                     std::cout << "2: Delete item in slot two." << std::endl;
                     std::cout << "3: Put the lens back." << std::endl;
                     int deleteChoice = getInt(1, 2);
                     if (deleteChoice == 1 && incCharacter->getInventory()[0]->getName() != "Golden Amulet") {
+                        //Slot one is not golden amulet, deleting key and placing amulet and solving
                         InventoryObject** currentInventory = incCharacter->getInventory();
                         delete currentInventory[0];
                         currentInventory[0] = theLens;
@@ -115,6 +147,7 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
                         std::cout << std::endl;
                     }
                     else if (deleteChoice == 2 && incCharacter->getInventory()[1]->getName() != "Golden Amulet") {
+                        //Slot two is not golden amulet, deleting key and placing amulet and solving
                         InventoryObject** currentInventory = incCharacter->getInventory();
                         delete currentInventory[1];
                         currentInventory[1] = theLens;
@@ -125,12 +158,15 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
                         std::cout << std::endl;
                     }
                     else if (deleteChoice == 3) {
+                        //Decided to leave, free lens memory
                         loopDelete = false;
+                        delete theLens;
                         std::cout << std::endl;
                         std::cout << "Seems like a bad idea! But okay. You put the lens back." << std::endl;
                         std::cout << std::endl;
                     }
                     else {
+                        //Tried to delete amulet
                         std::cout << std::endl;
                         std::cout << "Something tells you that you shouldn't delete that item." << std::endl;
                     }
@@ -140,6 +176,7 @@ int SubterraneanAtrium::draw(Character* incCharacter, int& passingArg)
 
         }
         else if (lensChoice == 2) {
+            //Decided to leave amulet
             std::cout << std::endl;
             std::cout << "If you say so! Leaving the lens where it is." << std::endl;
             std::cout << std::endl;

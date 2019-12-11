@@ -21,10 +21,10 @@
 #define FOCUSINGLENS_HPP
 
 /*********************************************************************
-** Menu class
-** Abstraction it represents: menu for running Fibonacci functions
-** What it's for: running recursive and iterative fxns 1k times
-** How to use it: all functionality tied to showMenu()
+** Focusing Lens class
+** Abstraction it represents: required item for game progression
+** What it's for: sits in player inventory when collected
+** How to use it: default constructor
 *********************************************************************/
 class FocusingLens : public InventoryObject
 {
@@ -33,11 +33,8 @@ public:
     FocusingLens();
     ~FocusingLens();
 
-    //Member functions
-
-
 private:
 
 };
 
-#endif // !JUNGLEFLOOR_HPP
+#endif // !FOCUSINGLENS_HPP

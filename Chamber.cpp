@@ -10,10 +10,22 @@
 //Inclusions
 #include "Chamber.hpp"
 
+/*********************************************************************
+** Chamber destructor
+** Paramaters are: none
+** What it does: virtual destructor
+** Returns: No return data.
+*********************************************************************/
 Chamber::Chamber()
 {
 }
 
+/*********************************************************************
+** Chamber destructor
+** Paramaters are: none
+** What it does: virtual destructor
+** Returns: No return data.
+*********************************************************************/
 Chamber::~Chamber()
 {
 }
