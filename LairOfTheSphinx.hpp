@@ -15,6 +15,7 @@
 #include <string>
 #include "Space.hpp"
 #include "Character.hpp"
+#include "Chamber.hpp"
 
 #ifndef LAIROFTHESPHINX_HPP
 #define LAIROFTHESPHINX_HPP
@@ -25,7 +26,7 @@
 ** What it's for: running recursive and iterative fxns 1k times
 ** How to use it: all functionality tied to showMenu()
 *********************************************************************/
-class LairOfTheSphinx : public Space
+class LairOfTheSphinx : public Chamber
 {
 public:
     //Con/destructors

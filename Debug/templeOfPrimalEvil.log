@@ -1,10 +1,29 @@
-﻿  LairOfTheSphinx.cpp
+﻿  Amulet.cpp
+  Barbarian.cpp
+  Chamber.cpp
+  Character.cpp
+  Corridor.cpp
+  FocusingLens.cpp
+  Game.cpp
+  HarryPotter.cpp
+  InventoryObject.cpp
+  JungleFloor.cpp
+  LairOfTheSphinx.cpp
   Menu.cpp
   MightySeal.cpp
+  Outside.cpp
+  Queue.cpp
   Rest.cpp
   Rumble.cpp
-C:\Users\Work\source\repos\templeOfPrimalEvil\Rumble.cpp(63,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Work\source\repos\templeOfPrimalEvil\Rumble.cpp(412,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ShadowKey.cpp
+  Space.cpp
   SubterraneanAtrium.cpp
+  Generating Code...
+C:\Users\Work\source\repos\templeOfPrimalEvil\Queue.cpp(265): warning C4715: 'Queue::removeFront': not all control paths return a value
+C:\Users\Work\source\repos\templeOfPrimalEvil\Queue.cpp(328): warning C4715: 'Queue::removeBack': not all control paths return a value
+  Compiling...
+  TempleFoyer.cpp
   TombOfTheGravediggers.cpp
   Generating Code...
   templeOfPrimalEvil.vcxproj -> C:\Users\Work\source\repos\templeOfPrimalEvil\Debug\templeOfPrimalEvil.exe

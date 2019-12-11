@@ -15,6 +15,7 @@
 #include <string>
 #include "Space.hpp"
 #include "Character.hpp"
+#include "Chamber.hpp"
 
 #ifndef TOMBOFTHEGRAVEDIGGERS_HPP
 #define TOMBOFTHEGRAVEDIGGERS_HPP
@@ -25,7 +26,7 @@
 ** What it's for: running recursive and iterative fxns 1k times
 ** How to use it: all functionality tied to showMenu()
 *********************************************************************/
-class TombOfTheGraveDiggers : public Space
+class TombOfTheGraveDiggers : public Chamber
 {
 public:
     //Con/destructors

@@ -13,6 +13,7 @@
 #include <cmath>
 #include <string>
 #include "Queue.hpp"
+#include "Space.hpp"
 
 #ifndef RUMBLE_HPP
 #define RUMBLE_HPP
@@ -30,22 +31,16 @@ public:
     Rumble();
     ~Rumble();
 
-    //Getter/Setter functions
-    Queue* getBlueTeam();
-    void setBlueTeam(Queue*);
-    Queue* getRedTeam();
-    void setRedTeam(Queue*);
-    Queue* getLosersBracket();
-    void setLosersBracket(Queue*);
-    int getBlueScore();
-    void setBlueScore(int);
-    int getRedScore();
-    void setRedScore(int);
+    //Level functions
+    void playJungleFloor(Character*, Space*, int&, int&, bool&, bool&, Space*);
+    void playFoyer(Character*, Space*, int&, int&, bool&, bool&, Space*, Space*);
+    void playSphinx(Character*, Space*, int&, int&, bool&, bool&);
+    void playMightySeal(Character*, Space*, int&, int&, bool&, bool&);
+    void playTomb(Character*, Space*, int&, int&, bool&, bool&);
+    void playAtrium(Character*, Space*, int&, int&, bool&, bool&);
+    void playRest(Character*, Space*, int&, int&, bool&, bool&);
 
-    //Member functions
-    void gameOver();
-    void printStatus();
-    void matchHeader(int);
+    //Other member functions
     void runRumble();
     int getInt(int, int);
 

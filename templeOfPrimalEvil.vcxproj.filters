@@ -75,6 +75,15 @@
     <ClInclude Include="Rest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Outside.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chamber.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Corridor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -138,6 +147,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Rest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Corridor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Chamber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Outside.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
