@@ -1,11 +1,2 @@
-﻿  LairOfTheSphinx.cpp
-  MightySeal.cpp
-  Rest.cpp
-  Rumble.cpp
-C:\Users\Work\source\repos\templeOfPrimalEvil\Rumble.cpp(507,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Space.cpp
-  SubterraneanAtrium.cpp
-  TempleFoyer.cpp
-  TombOfTheGravediggers.cpp
-  Generating Code...
+﻿  Rumble2.cpp
   templeOfPrimalEvil.vcxproj -> C:\Users\Work\source\repos\templeOfPrimalEvil\Debug\templeOfPrimalEvil.exe

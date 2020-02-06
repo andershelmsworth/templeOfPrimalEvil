@@ -152,6 +152,7 @@
     <ClInclude Include="LairOfTheSphinx.hpp" />
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="MightySeal.hpp" />
+    <ClInclude Include="nest\Rumble2.hpp" />
     <ClInclude Include="Outside.hpp" />
     <ClInclude Include="Queue.hpp" />
     <ClInclude Include="Rest.hpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MightySeal.cpp" />
+    <ClCompile Include="nest\Rumble2.cpp" />
     <ClCompile Include="Outside.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Rest.cpp" />
